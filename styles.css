@@ -1,0 +1,314 @@
+/* ===============================
+0. || Style Guide
+   -------------------------------
+
+1. || Global Styles
+    - Styles that effect the whole website
+    - Resets, box-sizing, default background & text colors, base font settings
+
+2. || Typography Styles
+    - Font families, font sizes, line heights
+    - Headings, paragraphs, links, lists
+
+3. || Structure Styles
+    - Main layout, large sections
+    - Header, nav, main, footer, unique sections
+    - Use width, margin, padding, flexbox, grid, etc to organize page structure
+
+4. || Module Styles
+    - Reusable blocks or sections: cards, forms, feature sections
+
+5. || Component Styles
+    - Smaller, specific UI elements like buttons, input fields, badges, icons
+
+==================================
+>> Element Organization:
+----------------------------------
+
+- Positioning: position, top, z-index
+- Display & Box Model: display, flex, grid, width, height, margin, padding
+- Typography: font, line-height, color, text-align
+- Visuals: background, border, border-radius
+- Misc: opacity, transform, transition
+
+================================== */
+
+/* ===============================
+1. || Global Styles
+   ------------------------------- */
+:root {
+    --red: #D34C4C;
+    --orange: #E18328;
+    --yellow: #F1BE01;
+    --green: #7A9E20;
+    --blue: #1F96AA;
+    --dark-blue: #095D82;
+    --grey: #3B3B3B;
+    --brown: #82624E;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+    /* border: 1px dashed black; */
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    font-size: 16pt;
+    max-width: 100%;
+}
+
+/* ===============================
+2. || Typography Styles
+   ------------------------------- */
+.brush {
+    font-family: "Caveat Brush", sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-style: italic;
+}
+
+.dawns-nest {
+    box-sizing: border-box;
+    display: inline-block;
+    padding-right: 10px;
+    
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    background: linear-gradient(225deg, #D34C4C 10%, #F1BE01 50%, #7A9E20 70%, #1F96AA 90%);
+    background-clip: text;
+    -webtkit-background-clip: text;
+
+    filter: drop-shadow(1px 0px 0.4px #000) drop-shadow(0px 0px 0.4px #000)
+            drop-shadow(0px 1px 0.4px #000) drop-shadow(0px 0px 0.4px #000)
+
+            drop-shadow(1px 1px 0.4px #000) drop-shadow(-1px -1px 0.4px #000)
+            drop-shadow(1px -1px 0.4px #000) drop-shadow(-1px 1px 0.4px #000);
+}
+
+h1 {
+    font-family: "Permanent Marker", sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: normal;
+    text-align: center;
+    line-height: 1;
+}
+
+h2 {
+    font-family: "Special Gothic Condensed One", sans-serif;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* ===============================
+3. || Structure Styles
+   ------------------------------- */
+nav {
+    display: flex;
+    
+    max-width: 100%;
+    padding-right: 20px;
+    
+    background-color: white;
+    box-shadow: 0 2px 5px #0003;
+}
+
+nav img {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 10px;
+    height: auto;
+    width: clamp(115px, 25%, 200px);
+}
+
+.nav-phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    max-width: 100%;
+    padding: 10px;
+    margin: auto;
+
+    color: black;
+
+    text-align: center;
+}
+
+.phone:hover {
+    color: #095D82;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 1rem;
+    list-style: none;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+
+}
+
+header::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    content: "";
+
+    background:
+        radial-gradient(#1F96AADD 15%, transparent 5%) 0 0,
+        radial-gradient(#1F96AADD 15%, transparent 5%) 7.5px 7.5px,
+        radial-gradient(#095D82DD 15%, transparent 5%) 0 0px,
+        radial-gradient(#095D82DD 15%, transparent 5%) 7.5px 7.5px;
+    background-size:
+        15px 15px;
+
+    opacity: 0.8;
+
+    mask-image: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.7) 0%,
+        transparent 75%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.7) 0%,
+        transparent 75%
+    );
+}
+
+@media screen and (width <= 600px) {
+    nav img {
+        margin-right: auto;
+    }
+
+    .nav-phone {
+        display: none;
+    }
+}
+
+@media screen and (width <= 440px) {
+    .nav-list {
+        gap: 5px;
+    }
+}
+
+/* ===============================
+4. || Module Styles
+   ------------------------------- */
+.banner {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: clamp(50vw, 60vw, 70vw);
+    height: clamp(450px, 70vh, 700px);
+}
+
+.banner::before {
+    position: absolute;
+    inset: 20px;
+    z-index: 0;
+
+    content: "";
+    background-image: url("./images/DawnsNestLogo.webp");
+    background-origin: content-box;
+    background-position: 95% 10%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+    filter: drop-shadow(5px 15px 2px #0003);
+}
+
+.button-primary {
+    padding: 10px;
+    color: black;
+    background-color: var(--orange);
+
+    border-radius: .7rem;
+}
+
+.button-primary:hover {
+    background-color: var(--yellow);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+    justify-content: center;
+    z-index: 1;
+
+    max-height: auto;
+    max-width: 600px;
+
+    padding: 20px;
+
+    background-color: #FFFFFFAA;
+    box-shadow: 0px 5px 10px #0003;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 0.7rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.card p {
+    padding: 0 20px;
+}
+
+@media screen and (width <= 1500px) {
+    .banner {
+        justify-content: center;
+        align-items: flex-end;
+        width: clamp(50vw, 80vw, 90vw);
+        height: clamp(350px, 75vh, 500px);
+    }
+    .banner::before {
+        background-position: 50% 10%;
+    }
+}
+
+@media screen and (width <= 440px) {
+    .banner::before {
+        align-items: flex-end;
+        
+        background-position: 95% 0%;
+    }
+
+    .button-primary {
+        padding: 5px;
+        font-size: 1rem;
+
+        border-radius: .7rem;
+    }
+
+    .card {
+        margin-bottom: 40px;
+    }
+}
+
+/* ===============================
+5. || Component Styles
+   ------------------------------- */
